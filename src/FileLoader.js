@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./FileLoader.css"
+import "./FileLoader.css";
 
 function FileLoader({ setTrack, setMapBounds }) {
   const [file, setFile] = useState(null);
@@ -38,19 +38,17 @@ function FileLoader({ setTrack, setMapBounds }) {
         new_track.push({ lat, lon });
       });
 
-      setTrack(new_track);
       setMapBounds([
         [minLat, minLon],
         [maxLat, maxLon],
       ]);
-      
+      setTrack(new_track);
     });
 
     if (event.target.files[0]) {
       reader.readAsText(event.target.files[0]);
       setFile(event.target.files[0]);
     }
-    
   };
 
   return (

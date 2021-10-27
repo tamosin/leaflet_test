@@ -28,3 +28,7 @@ h1 {
   width: 100%;
 }
 
+.leaflet-marker-icon {
+  transition: 300ms;
+  transition-timing-function: linear;
+}

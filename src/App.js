@@ -11,6 +11,7 @@ import Leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 import FileLoader from "./FileLoader";
 import bikeSVG from "./bike-svgrepo-com.svg";
+import { test_track, test_bounds } from "./test_track";
 
 const defalutMapPosition = [51.505, -0.09];
 
@@ -29,13 +30,14 @@ function App() {
   function ChangeView({ mapBounds }) {
     const map = useMap();
     map.fitBounds(mapBounds);
-    setMapBounds([]);
     return null;
   }
 
   useEffect(() => {
+    setMapBounds([]);
+  }, [track]);
 
-
+  useEffect(() => {
     let currentPointIndex = 0;
     const interval = setInterval(() => {
       if (track.length > 0) {
@@ -43,10 +45,13 @@ function App() {
         currentPointIndex = currentPointIndex + 1;
       }
     }, 300);
-
-
     return () => clearInterval(interval);
   }, [track]);
+
+  useEffect(() => {
+    setTrack(test_track);
+    setMapBounds(test_bounds);
+  }, []);
 
   return (
     <div className="App">
@@ -71,11 +76,7 @@ function App() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {track && <Polyline key={1} positions={track} color={"red"} />}
-            <Marker
-              position={markerPosition}
-              icon={markerIcon}
-              style={{ color: "red" }}
-            />
+            <Marker position={markerPosition} icon={markerIcon} />
           </MapContainer>
         </div>
       </section>
