@@ -1,0 +1,12 @@
+:root {
+  --font-color: #6a9955;
+  --hover-color: #8ba180;
+  --bg-color: #1e1e1e;  
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: Consolas, "Courier New", monospace;
+}

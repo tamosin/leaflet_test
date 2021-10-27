@@ -1,0 +1,25 @@
+.file-loader-container {
+  padding: 20px 40px;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file-input::before {
+  content: "Select track file (GPX-format)";
+  display: inline-block;
+  color: var(--bg-color);
+  background: var(--font-color);
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.file-input:hover::before {
+  background: var(--hover-color);
+}
+
+.file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
